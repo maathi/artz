@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
+
+body {
+  background-color: #460031;
+  margin: auto;
+  color: white;
+  font-family: "Yusei Magic", sans-serif;
+}
+
+.App {
+  text-align: center;
+  /* font-size: 2rem;
+  font-family: "Caveat", cursive; */
+  /* font-family: "Yusei Magic", sans-serif; */
+  /* font-size: 8px; */
+}
+
+input {
+  font-family: "Yusei Magic", sans-serif;
+  border: 2px solid white;
+  margin: 1rem 0;
+  border-radius: 5px;
+  height: 2rem;
+  text-align: center;
+  background-color: transparent;
+  color: white;
+}
+
+button {
+  font-family: "Yusei Magic", sans-serif;
+  border: 2px solid black;
+  margin: 1rem 0;
+  border-radius: 5px;
+  height: 2rem;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}

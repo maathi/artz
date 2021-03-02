@@ -1,0 +1,92 @@
+.nav {
+  display: flex;
+  padding-left: 0;
+  padding-right: 1rem;
+  align-items: center;
+  margin: auto;
+  list-style: none;
+  background-color: black;
+  font-size: 0.8rem;
+  font-family: "Permanent Marker", cursive;
+  /* justify-content: flex-end;
+  column-gap: 3rem; */
+  /* height: 2.6rem; */
+}
+
+.nav-lg {
+  justify-content: flex-end;
+  column-gap: 3rem;
+  height: 2.6rem;
+}
+
+.nav-sm {
+  row-gap: 1rem;
+  flex-direction: column;
+}
+
+li:first-child {
+  margin-right: auto;
+}
+
+li > a {
+  cursor: pointer;
+  /* float: right; */
+  color: white;
+  /* text-align: center;*/
+  /* padding: 4px 16px; */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+li > a:hover {
+  color: #a50073;
+  transition: 0.3s;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+}
+li > a.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.nav > img {
+  float: left;
+  height: 100%;
+}
+
+#nav-pic {
+  height: 1.5rem;
+  width: 1.5rem;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 2.5px solid #a50073;
+  /* display: inline; */
+}
+
+#logo {
+  height: 2.5rem;
+}
+
+#brush {
+  font-size: 18px;
+  padding-top: 6px;
+}
+
+li#menu {
+  display: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 520px) {
+  .nav li:not(:first-child) {
+    display: none;
+  }
+  li#menu {
+    display: block;
+  }
+}

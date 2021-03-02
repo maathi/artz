@@ -1,0 +1,40 @@
+#new form {
+  font-family: "Yusei Magic", sans-serif;
+  width: 50vw;
+  margin: 1rem auto;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid white;
+  border-style: dashed;
+  border-radius: 12px;
+}
+
+#color-picker {
+  margin: auto;
+}
+#new textarea {
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  margin: 1rem 0;
+
+  /* font-size: inherit; */
+  text-indent: 0.5rem;
+  font-size: 0.8rem;
+  /* text-align: center; */
+  font-family: inherit;
+  background-color: inherit;
+}
+
+#new input {
+}
+
+#new button {
+  width: 30%;
+  margin: 1rem auto;
+}
+
+canvas {
+  width: 100%;
+}
