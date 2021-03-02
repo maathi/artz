@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import logo from "../img/artist.png"
 import { FaPaintBrush } from "react-icons/fa"
 import "../styles/navbar.css"
@@ -8,8 +8,7 @@ import { BiMenu } from "react-icons/bi"
 
 function Nav(props) {
   const userContext = useContext(UserContext)
-  const history = useHistory()
-  let [classes, setClasses] = useState("nav")
+  let [classes] = useState("nav")
   let [style, setStyle] = useState({
     justifyContent: "flex-end",
     columnGap: "3rem",
@@ -22,17 +21,17 @@ function Nav(props) {
     window.location.href = "/login"
   }
 
-  function guestNav() {
-    return (
-      <ul className="nav">
-        <li>
-          <Link to="/">
-            <img id="logo" src={logo} alt="" />
-          </Link>
-        </li>
-      </ul>
-    )
-  }
+  // function guestNav() {
+  //   return (
+  //     <ul className="nav">
+  //       <li>
+  //         <Link to="/">
+  //           <img id="logo" src={logo} alt="" />
+  //         </Link>
+  //       </li>
+  //     </ul>
+  //   )
+  // }
 
   function showMenu() {
     setStyle({ rowGap: "1rem", flexDirection: "column" })
@@ -55,7 +54,9 @@ function Nav(props) {
           <Link to={"/@" + userContext.name}>{userContext.name}</Link>
         </li>
         <li>
-          <a onClick={logout}>logout</a>
+          <span style={{ cursor: "pointer" }} onClick={logout}>
+            logout
+          </span>
         </li>
       </React.Fragment>
     )
@@ -76,9 +77,9 @@ function Nav(props) {
         </li>
       )}
       <li id="menu" onClick={showMenu}>
-        <a>
+        <span style={{ cursor: "pointer" }}>
           <BiMenu />
-        </a>
+        </span>
       </li>
     </ul>
   )

@@ -60,7 +60,7 @@ function User() {
   })
 
   const [updatePhoto, { data: updatePhotoData }] = useMutation(UPDATE_PHOTO)
-  const [updateIntro, { data: introData }] = useMutation(UPDATE_INTRO)
+  const [updateIntro] = useMutation(UPDATE_INTRO)
   const [deleteArt, { data: deletedArtdata }] = useMutation(DELETE_ART)
 
   useEffect(() => {
@@ -70,8 +70,8 @@ function User() {
     setUser(data.userByName)
     setIntro(data.userByName.intro || "")
 
-    if (data.userByName.id == userContext.id) setIsProfile(true)
-  }, [data])
+    if (data.userByName.id === userContext.id) setIsProfile(true)
+  }, [data, userContext.id])
 
   useEffect(() => {
     if (!updatePhotoData) return
@@ -83,17 +83,17 @@ function User() {
     }
     decode()
     localStorage.setItem("token", updatePhotoData.updatePhoto)
-  }, [updatePhotoData])
+  }, [updatePhotoData, userContext])
 
   useEffect(() => {
     if (!deletedArtdata) return
     if (!deletedArtdata.deleteArt) return
 
-    let arts = user.arts.filter((a) => a.id != deletedArtdata.deleteArt.id)
+    let arts = user.arts.filter((a) => a.id !== deletedArtdata.deleteArt.id)
     let u = JSON.parse(JSON.stringify(user))
     u.arts = arts
     setUser(u)
-  }, [deletedArtdata])
+  }, [deletedArtdata, user])
 
   async function handleUpload({
     target: {

@@ -1,5 +1,5 @@
-import { useQuery, gql, useMutation } from "@apollo/client"
-import { useState, useEffect, useContext } from "react"
+import { useQuery, gql } from "@apollo/client"
+import { useState, useEffect } from "react"
 import Card from "./card"
 import "../../styles/arts.css"
 

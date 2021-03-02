@@ -16,7 +16,7 @@ export default function Canvas(props) {
   useEffect(() => {
     if (!ctx) return
 
-    if (mouse == "up") {
+    if (mouse === "up") {
       ctx.beginPath()
       return
     }
@@ -26,7 +26,7 @@ export default function Canvas(props) {
     ctx.lineTo(p?.x, p?.y)
     ctx.strokeStyle = props.color
     ctx.stroke()
-  }, [p])
+  }, [p, ctx, mouse, props.color, props.lineWidth])
 
   function handleMouseMove(e) {
     var rect = canvas.getBoundingClientRect()

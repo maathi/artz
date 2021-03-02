@@ -1,10 +1,8 @@
 import { useMutation, gql, useLazyQuery } from "@apollo/client"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import logo from "../../img/artist.png"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import jwt from "jsonwebtoken"
 import "../../styles/sign.css"
 
 const ADD_USER = gql`
@@ -23,9 +21,7 @@ const CHECK_NAME = gql`
 
 function Register() {
   const [addUser, { data }] = useMutation(ADD_USER)
-  const [checkName, { loading, data: checkNameData, error }] = useLazyQuery(
-    CHECK_NAME
-  )
+  const [checkName, { data: checkNameData }] = useLazyQuery(CHECK_NAME)
 
   const formik = useFormik({
     initialValues: {
@@ -46,7 +42,7 @@ function Register() {
         )
         .required("A username is required")
         .test("check username", "username already exists!", async (value) => {
-          let fo = await checkName({ variables: { name: value } })
+          await checkName({ variables: { name: value } })
           return !checkNameData?.checkName
         }),
       password: Yup.string()

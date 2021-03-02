@@ -66,10 +66,6 @@ function New() {
     window.location.href = "/"
   }, [data])
 
-  function stepOne() {
-    return
-  }
-
   return (
     <section id="new">
       <h2>add a new painting!</h2>

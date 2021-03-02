@@ -1,10 +1,9 @@
 import { useLazyQuery, gql } from "@apollo/client"
 import { useEffect, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useFormik } from "formik"
 // import logo from "./../../img/artist.png"
 import "../../styles/sign.css"
-import logo from "./../../img/logo.png"
 const LOG_IN = gql`
   query Login($name: String, $password: String) {
     login(name: $name, password: $password)
@@ -12,7 +11,6 @@ const LOG_IN = gql`
 `
 
 function Login() {
-  let history = useHistory()
   let [loginError, setLoginError] = useState("")
   const [login, { loading, data, error }] = useLazyQuery(LOG_IN)
 
@@ -67,7 +65,6 @@ function Login() {
         <input
           id="password"
           name="password"
-          type="password"
           placeholder="password"
           type="text"
           onChange={formik.handleChange}

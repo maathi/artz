@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Arts from "./components/art/arts"
 import Art from "./components/art/art"
 import New from "./components/art/new"
@@ -32,7 +27,7 @@ function App() {
       setPhoto(user.photo)
     }
     decode()
-  }, [])
+  }, [token])
 
   return (
     <Router>
