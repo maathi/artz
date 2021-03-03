@@ -26,7 +26,7 @@ export default function Canvas(props) {
     ctx.lineTo(p?.x, p?.y)
     ctx.strokeStyle = props.color
     ctx.stroke()
-  }, [p, ctx, mouse, props.color, props.lineWidth])
+  }, [p])
 
   function handleMouseMove(e) {
     var rect = canvas.getBoundingClientRect()

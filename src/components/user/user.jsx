@@ -72,7 +72,7 @@ function User() {
 
     if (data.userByName.id.toString() === userContext?.id?.toString())
       setIsProfile(true)
-  }, [data, userContext.id])
+  }, [data])
 
   useEffect(() => {
     if (!updatePhotoData) return
@@ -84,7 +84,7 @@ function User() {
     }
     decode()
     localStorage.setItem("token", updatePhotoData.updatePhoto)
-  }, [updatePhotoData, userContext])
+  }, [updatePhotoData])
 
   useEffect(() => {
     if (!deletedArtdata?.deleteArt) return
