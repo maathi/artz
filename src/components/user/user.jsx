@@ -70,7 +70,7 @@ function User() {
     setUser(data.userByName)
     setIntro(data.userByName.intro || "")
 
-    if (data.userByName.id.toString() === userContext.id.toString())
+    if (data.userByName.id.toString() === userContext?.id?.toString())
       setIsProfile(true)
   }, [data, userContext.id])
 
