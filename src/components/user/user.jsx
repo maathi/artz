@@ -70,7 +70,8 @@ function User() {
     setUser(data.userByName)
     setIntro(data.userByName.intro || "")
 
-    if (data.userByName.id === userContext.id) setIsProfile(true)
+    if (data.userByName.id.toString() === userContext.id.toString())
+      setIsProfile(true)
   }, [data, userContext.id])
 
   useEffect(() => {
@@ -86,14 +87,13 @@ function User() {
   }, [updatePhotoData, userContext])
 
   useEffect(() => {
-    if (!deletedArtdata) return
-    if (!deletedArtdata.deleteArt) return
+    if (!deletedArtdata?.deleteArt) return
 
     let arts = user.arts.filter((a) => a.id !== deletedArtdata.deleteArt.id)
     let u = JSON.parse(JSON.stringify(user))
     u.arts = arts
     setUser(u)
-  }, [deletedArtdata, user])
+  }, [deletedArtdata])
 
   async function handleUpload({
     target: {

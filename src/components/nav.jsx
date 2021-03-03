@@ -66,7 +66,7 @@ function Nav(props) {
     <ul className={classes} style={style}>
       <li>
         <Link to="/">
-          <img id="logo" src={logo} alt="" />
+          <img id="logo" src="artz.png" alt="" />
         </Link>
       </li>
       {userContext.token ? (
