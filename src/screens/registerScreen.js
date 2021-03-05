@@ -1,8 +1,9 @@
 import { useMutation, gql, useLazyQuery } from "@apollo/client"
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import UserContext from "../userContext"
 import "../styles/sign.css"
 
 const ADD_USER = gql`
@@ -19,10 +20,11 @@ const CHECK_NAME = gql`
   }
 `
 
-function RegisterScreen() {
+function RegisterScreen({ history }) {
   const [addUser, { data }] = useMutation(ADD_USER)
   const [checkName, { data: checkNameData }] = useLazyQuery(CHECK_NAME)
 
+  let userContext = useContext(UserContext)
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -58,11 +60,11 @@ function RegisterScreen() {
   })
 
   useEffect(() => {
-    if (!data) return
-    if (!data.addUser) return
+    if (!data?.addUser) return
 
     localStorage.setItem("token", data.addUser)
-    window.location.href = "/"
+    userContext.setUser(data.addUser)
+    history.push("/")
   }, [data])
 
   return (

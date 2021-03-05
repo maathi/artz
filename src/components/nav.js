@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import { FaPaintBrush } from "react-icons/fa"
 import "../styles/navbar.css"
 import React, { useContext, useState } from "react"
 import UserContext from "../userContext"
 import { BiMenu } from "react-icons/bi"
 
-function Nav(props) {
+function Nav({ history }) {
   const userContext = useContext(UserContext)
   let [classes] = useState("nav")
   let [style, setStyle] = useState({
@@ -16,21 +16,9 @@ function Nav(props) {
 
   function logout() {
     localStorage.clear()
-    // history.push("/login")
-    window.location.href = "/login"
+    userContext.clearUser()
+    history.push("/login")
   }
-
-  // function guestNav() {
-  //   return (
-  //     <ul className="nav">
-  //       <li>
-  //         <Link to="/">
-  //           <img id="logo" src={logo} alt="" />
-  //         </Link>
-  //       </li>
-  //     </ul>
-  //   )
-  // }
 
   function showMenu() {
     setStyle({ rowGap: "1rem", flexDirection: "column" })
@@ -84,4 +72,4 @@ function Nav(props) {
   )
 }
 
-export default Nav
+export default withRouter(Nav)

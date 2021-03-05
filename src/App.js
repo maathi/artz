@@ -16,31 +16,53 @@ import SignRoute from "./routes/signRoute"
 
 function App() {
   let [id, setId] = useState(null)
-  let [name, setName] = useState("")
-  let [photo, setPhoto] = useState("")
-  let token = localStorage.getItem("token")
+  let [name, setName] = useState(null)
+  let [photo, setPhoto] = useState(null)
+  let [token, setToken] = useState(null)
+
+  function clearUser() {
+    setId(null)
+    setName(null)
+    setPhoto(null)
+    setToken(null)
+  }
+
+  async function setUser(token) {
+    setToken(token)
+
+    let user = await jwt.decode(token)
+    if (!user) return
+    setId(user.id)
+    setName(user.name)
+    setPhoto(user.photo)
+  }
+
   useEffect(() => {
-    async function decode() {
-      let user = await jwt.decode(token)
-      if (!user) return
-      setId(user.id)
-      setName(user.name)
-      setPhoto(user.photo)
-    }
-    decode()
-  }, [token])
+    let token = localStorage.getItem("token")
+    if (token) setUser(token)
+  }, [])
 
   return (
     <Router>
       <UserContext.Provider
-        value={{ id, setId, name, setName, photo, setPhoto, token }}
+        value={{
+          id,
+          setId,
+          name,
+          setName,
+          photo,
+          setPhoto,
+          token,
+          setToken,
+          clearUser,
+          setUser,
+        }}
       >
         <div className="App">
           <Nav></Nav>
           <Switch>
             <Route path="/@:name" component={ProfileScreen}></Route>
             <PrivateRoute path="/new" component={PaintScreen}></PrivateRoute>
-
             <SignRoute path="/login" component={LoginScreen}></SignRoute>
             <SignRoute path="/register" component={RegisterScreen}></SignRoute>
             <Route path="/:id">

@@ -17,7 +17,7 @@ const ADD_ART = gql`
   }
 `
 
-function PaintScreen() {
+function PaintScreen({ history }) {
   let [color, setColor] = useState("#000")
   let [lineWidth, setLineWidth] = useState(3)
 
@@ -62,7 +62,7 @@ function PaintScreen() {
     if (!data) return
     if (!data.addArt) return
 
-    window.location.href = "/"
+    history.push("/")
   }, [data])
 
   return (

@@ -1,8 +1,9 @@
 import { useLazyQuery, gql } from "@apollo/client"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { useFormik } from "formik"
-// import logo from "./../../img/artist.png"
+import UserContext from "../userContext"
+import jwt from "jsonwebtoken"
 import "../styles/sign.css"
 const LOG_IN = gql`
   query Login($name: String, $password: String) {
@@ -10,9 +11,10 @@ const LOG_IN = gql`
   }
 `
 
-function LoginScreen() {
+function LoginScreen({ history }) {
   let [loginError, setLoginError] = useState("")
   const [login, { loading, data, error }] = useLazyQuery(LOG_IN)
+  let userContext = useContext(UserContext)
 
   const formik = useFormik({
     initialValues: {
@@ -34,8 +36,9 @@ function LoginScreen() {
     }
 
     localStorage.setItem("token", data.login)
-    window.location.href = "/"
-    // history.push("/artist")
+    userContext.setUser(data.login)
+
+    history.push("/")
   }, [data])
 
   if (loading) return <p>loading...</p>
@@ -43,10 +46,6 @@ function LoginScreen() {
 
   return (
     <section id="login">
-      {/* <div id="logo-wrapper">
-        <img src={logo} alt="" />
-      </div> */}
-
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit} autoComplete="off">
         <input
