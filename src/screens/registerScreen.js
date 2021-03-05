@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import "../../styles/sign.css"
+import "../styles/sign.css"
 
 const ADD_USER = gql`
   mutation AddUser($name: String, $password: String) {
@@ -19,7 +19,7 @@ const CHECK_NAME = gql`
   }
 `
 
-function Register() {
+function RegisterScreen() {
   const [addUser, { data }] = useMutation(ADD_USER)
   const [checkName, { data: checkNameData }] = useLazyQuery(CHECK_NAME)
 
@@ -103,4 +103,4 @@ function Register() {
     </section>
   )
 }
-export default Register
+export default RegisterScreen

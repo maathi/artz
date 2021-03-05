@@ -3,14 +3,14 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useFormik } from "formik"
 // import logo from "./../../img/artist.png"
-import "../../styles/sign.css"
+import "../styles/sign.css"
 const LOG_IN = gql`
   query Login($name: String, $password: String) {
     login(name: $name, password: $password)
   }
 `
 
-function Login() {
+function LoginScreen() {
   let [loginError, setLoginError] = useState("")
   const [login, { loading, data, error }] = useLazyQuery(LOG_IN)
 
@@ -88,4 +88,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginScreen

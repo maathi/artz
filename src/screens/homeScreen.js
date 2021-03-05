@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client"
 import { useState, useEffect } from "react"
-import Card from "./card"
-import "../../styles/arts.css"
+import Card from "../components/card"
+import "../styles/arts.css"
 
 const GET_ARTS = gql`
   query {
@@ -19,7 +19,7 @@ const GET_ARTS = gql`
   }
 `
 
-function Arts() {
+function HomeScreen() {
   let [arts, setArts] = useState()
   const { loading, error, data } = useQuery(GET_ARTS)
 
@@ -40,4 +40,4 @@ function Arts() {
   )
 }
 
-export default Arts
+export default HomeScreen

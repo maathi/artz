@@ -1,12 +1,11 @@
 import { useMutation, gql } from "@apollo/client"
 import { useState, useEffect } from "react"
 import { HexColorPicker } from "react-colorful"
-// import "react-colorful/dist/index.css"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import Canvas from "./canvas"
-import "../../styles/new.css"
-import storage from "../../firebase"
+import Canvas from "../components/canvas"
+import "../styles/new.css"
+import storage from "../config/firebase"
 import shortid from "shortid"
 
 const ADD_ART = gql`
@@ -18,7 +17,7 @@ const ADD_ART = gql`
   }
 `
 
-function New() {
+function PaintScreen() {
   let [color, setColor] = useState("#000")
   let [lineWidth, setLineWidth] = useState(3)
 
@@ -119,4 +118,4 @@ function New() {
   )
 }
 
-export default New
+export default PaintScreen

@@ -2,10 +2,10 @@ import { useQuery, useMutation, gql } from "@apollo/client"
 import { useEffect, useState, useContext } from "react"
 import { useParams, Link } from "react-router-dom"
 import { FaTimesCircle, FaSave } from "react-icons/fa"
-import UserContext from "../../userContext"
+import UserContext from "../userContext"
 import jwt from "jsonwebtoken"
-import "../../styles/user.css"
-import storage from "../../firebase"
+import "../styles/user.css"
+import storage from "../config/firebase"
 import shortid from "shortid"
 
 const GET_USER = gql`
@@ -48,7 +48,7 @@ const UPDATE_INTRO = gql`
     }
   }
 `
-function User() {
+function ProfileScreen() {
   let [user, setUser] = useState()
   let [intro, setIntro] = useState("")
   let [isProfile, setIsProfile] = useState(false)
@@ -225,4 +225,4 @@ function User() {
   )
 }
 
-export default User
+export default ProfileScreen

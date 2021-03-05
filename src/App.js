@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Arts from "./components/art/arts"
-import Art from "./components/art/art"
-import New from "./components/art/new"
-import User from "./components/user/user"
-import Register from "./components/user/register"
-import Login from "./components/user/login"
-import Nav from "./components/nav.jsx"
-import UserContext from "./userContext"
 import jwt from "jsonwebtoken"
-import PrivateRoute from "./privateRoute"
-import SignRoute from "./signRoute"
+
+import UserContext from "./userContext"
+import Nav from "./components/nav"
+import HomeScreen from "./screens/homeScreen"
+import ArtScreen from "./screens/artScreen"
+import PaintScreen from "./screens/paintScreen"
+import LoginScreen from "./screens/loginScreen"
+import RegisterScreen from "./screens/registerScreen"
+import ProfileScreen from "./screens/profileScreen"
+import PrivateRoute from "./routes/privateRoute"
+import SignRoute from "./routes/signRoute"
 
 function App() {
   let [id, setId] = useState(null)
@@ -37,16 +38,16 @@ function App() {
         <div className="App">
           <Nav></Nav>
           <Switch>
-            <Route path="/@:name" component={User}></Route>
-            <PrivateRoute path="/new" component={New}></PrivateRoute>
+            <Route path="/@:name" component={ProfileScreen}></Route>
+            <PrivateRoute path="/new" component={PaintScreen}></PrivateRoute>
 
-            <SignRoute path="/login" component={Login}></SignRoute>
-            <SignRoute path="/register" component={Register}></SignRoute>
+            <SignRoute path="/login" component={LoginScreen}></SignRoute>
+            <SignRoute path="/register" component={RegisterScreen}></SignRoute>
             <Route path="/:id">
-              <Art></Art>
+              <ArtScreen></ArtScreen>
             </Route>
             <Route path="/">
-              <Arts></Arts>
+              <HomeScreen></HomeScreen>
             </Route>
           </Switch>
         </div>

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import logo from "../img/artist.png"
 import { FaPaintBrush } from "react-icons/fa"
 import "../styles/navbar.css"
 import React, { useContext, useState } from "react"

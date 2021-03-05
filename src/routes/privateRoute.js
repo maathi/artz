@@ -1,15 +1,15 @@
 import { Route, Redirect } from "react-router-dom"
-import UserContext from "./userContext"
+import UserContext from "../userContext"
 import { useContext } from "react"
 
-function SignRoute({ path, component }) {
+function PrivateRoute({ path, component }) {
   let userContext = useContext(UserContext)
 
-  return !userContext.token ? (
+  return userContext.token ? (
     <Route path={path} component={component}></Route>
   ) : (
-    <Redirect to="/"></Redirect>
+    <Redirect to="/login"></Redirect>
   )
 }
 
-export default SignRoute
+export default PrivateRoute

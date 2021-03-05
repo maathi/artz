@@ -18,7 +18,7 @@ const GET_ART = gql`
   }
 `
 
-function Art() {
+function ArtScreen() {
   let [art, setArt] = useState()
   let { id } = useParams()
 
@@ -62,4 +62,4 @@ function Art() {
   )
 }
 
-export default Art
+export default ArtScreen

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import "../../styles/arts.css"
-import "../../styles/card.css"
+import "../styles/arts.css"
+import "../styles/card.css"
 import { FaRegHeart } from "react-icons/fa"
 function Card({ j }) {
   return (
