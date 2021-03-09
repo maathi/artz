@@ -29,6 +29,7 @@ export default function Canvas(props) {
   }, [p])
 
   function handleMouseMove(e) {
+    console.log("moviing")
     var rect = canvas.getBoundingClientRect()
     setP({
       x: ((e.clientX - rect.left) / (rect.right - rect.left)) * canvas.width,
@@ -58,10 +59,13 @@ export default function Canvas(props) {
   return (
     <div>
       <canvas
-        onMouseMove={(e) => handleMouseMove(e)}
         onMouseDown={() => setMouse("down")}
+        onMouseMove={(e) => handleMouseMove(e)}
         onMouseUp={() => handleMouseUp()}
         onMouseLeave={() => setMouse("up")}
+        onTouchStart={() => setMouse("down")}
+        onTouchMove={(e) => handleMouseMove(e)}
+        onTouchEnd={() => handleMouseUp()}
         id="canvas"
         width="600px"
         height="400px"
