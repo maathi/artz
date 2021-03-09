@@ -17,7 +17,7 @@ function Card({ j }) {
       </div>
 
       <div id="bottom">
-        <FaRegHeart id="heart" />
+        {/* <FaRegHeart id="heart" /> */}
         <div id="user-info">
           <Link to={`/@${j.owner.name}`}>{j.owner.name}</Link>
           <Link to={`/@${j.owner.name}`}>
