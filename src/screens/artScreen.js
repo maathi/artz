@@ -2,7 +2,7 @@ import { useQuery, gql } from "@apollo/client"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
-
+import "../styles/art.css"
 const GET_ART = gql`
   query Art($id: Int) {
     art(id: $id) {
@@ -36,7 +36,7 @@ function ArtScreen() {
   if (error) return <p>Error :(</p>
 
   return (
-    <div>
+    <div id="art">
       <p>{art?.name}</p>
 
       <img
@@ -50,7 +50,7 @@ function ArtScreen() {
 
       <p style={{ fontSize: "18px" }}>
         <span>Created by : </span>
-        <Link to={`/@${art?.owner.name}`} style={{ color: "white" }}>
+        <Link to={`/@${art?.owner.name}`} style={{ color: "orange" }}>
           {art?.owner.name}
         </Link>
       </p>

@@ -3,16 +3,10 @@ import { FaPaintBrush } from "react-icons/fa"
 import "../styles/navbar.css"
 import React, { useContext, useState } from "react"
 import UserContext from "../userContext"
-import { BiMenu } from "react-icons/bi"
+import { BiLogOutCircle } from "react-icons/bi"
 
 function Nav({ history }) {
   const userContext = useContext(UserContext)
-  let [classes] = useState("nav")
-  let [style, setStyle] = useState({
-    justifyContent: "flex-end",
-    columnGap: "3rem",
-    height: "2.6rem",
-  })
 
   function logout() {
     localStorage.clear()
@@ -20,37 +14,37 @@ function Nav({ history }) {
     history.push("/login")
   }
 
-  function showMenu() {
-    setStyle({ rowGap: "1rem", flexDirection: "column" })
-  }
-
   function userNav() {
     return (
-      <React.Fragment>
+      <ul id="links">
         <li>
-          <Link to="/new">
+          <Link to="/new" className="item">
             <FaPaintBrush id="brush" />
+            <span className="togo">paint</span>
           </Link>
         </li>
         <li>
-          <img
-            id="nav-pic"
-            src={`${process.env.REACT_APP_FBS}/avatars%2F${userContext.photo}?alt=media`}
-            alt=""
-          />
-          <Link to={"/@" + userContext.name}>{userContext.name}</Link>
+          <Link to={"/@" + userContext.name} className="item">
+            <img
+              id="nav-pic"
+              src={`${process.env.REACT_APP_FBS}/avatars%2F${userContext.photo}?alt=media`}
+              alt=""
+            />
+            <span className="togo"> {userContext.name}</span>
+          </Link>
         </li>
         <li>
-          <span style={{ cursor: "pointer" }} onClick={logout}>
-            logout
+          <span style={{ cursor: "pointer" }} onClick={logout} className="item">
+            <BiLogOutCircle />
+            <span className="togo">logout</span>
           </span>
         </li>
-      </React.Fragment>
+      </ul>
     )
   }
 
   return (
-    <ul className={classes} style={style}>
+    <ul id="nav">
       <li>
         <Link to="/">
           <img id="logo" src="artz.png" alt="" />
@@ -59,15 +53,17 @@ function Nav({ history }) {
       {userContext.token ? (
         userNav()
       ) : (
-        <li>
-          <Link to="/login">login</Link>
+        <li
+          style={{
+            float: "right",
+            lineHeight: "2.5rem",
+          }}
+        >
+          <Link to="/login" style={{ color: "white" }}>
+            login
+          </Link>
         </li>
       )}
-      <li id="menu" onClick={showMenu}>
-        <span style={{ cursor: "pointer" }}>
-          <BiMenu />
-        </span>
-      </li>
     </ul>
   )
 }

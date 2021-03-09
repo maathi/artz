@@ -34,14 +34,13 @@
   background-color: rgb(209, 209, 209);
   border: 3px solid black;
   border-radius: 5px;
-
-  transition: 0.2s;
+  transition: 1s;
 }
 
 .wrapper:hover {
   /* cursor: pointer; */
-  border: 3px solid white;
-  transition: 0.2s;
+  border: 3px solid orange;
+  transition: 0.5s;
 }
 
 .wrapper > a > img {
@@ -74,19 +73,39 @@
   transition: 0.3s;
 }
 
-#user-info img:hover {
-  border: 2.5px solid white;
+#user-info a {
+  color: white;
+  transition: 0.3s;
+}
+#user-info a:hover {
+  color: orange;
+  transition: 0.3s;
 }
 
-#user-info :first-child:hover + a > img {
-  background-color: yellow;
-  border: 2.5px solid white;
+#user-info :last-child:hover + a {
+  border: 2.5px solid orange;
+  transition: 0.3s;
 }
 
 #user-info a {
   text-decoration: none;
 }
 
+#user-info:hover a {
+  color: orange;
+  transition: 0.5s;
+}
+
+#user-info:hover img {
+  border: 2.5px solid orange;
+  transition: 0.5s;
+}
+#user-info a {
+  transition: 1s;
+}
+#user-info img {
+  transition: 1s;
+}
 #heart {
   color: rgb(167, 167, 167);
 }

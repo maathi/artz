@@ -99,7 +99,7 @@ function RegisterScreen({ history }) {
         <button type="submit">Register</button>
         <div className="error"></div>
       </form>
-      <span>
+      <span id="redirect">
         already have an account? <Link to="/login">login</Link>
       </span>
     </section>

@@ -80,7 +80,7 @@ function LoginScreen({ history }) {
         <button type="submit">Login</button>
         <div className="error">{loginError ? loginError : null}</div>
       </form>
-      <span id="not-a-user">
+      <span id="redirect">
         not a user? <Link to="/register">register</Link>
       </span>
     </section>

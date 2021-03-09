@@ -1,0 +1,5 @@
+@media screen and (max-width: 650px) {
+  #art img {
+    width: 95vw;
+  }
+}

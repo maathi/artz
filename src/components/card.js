@@ -19,9 +19,7 @@ function Card({ j }) {
       <div id="bottom">
         <FaRegHeart id="heart" />
         <div id="user-info">
-          <Link to={`/@${j.owner.name}`} style={{ color: "white" }}>
-            {j.owner.name}
-          </Link>
+          <Link to={`/@${j.owner.name}`}>{j.owner.name}</Link>
           <Link to={`/@${j.owner.name}`}>
             <img
               src={`${process.env.REACT_APP_FBS}/avatars%2F${j.owner.photo}?alt=media`}

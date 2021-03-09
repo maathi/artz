@@ -211,13 +211,14 @@ function ProfileScreen() {
         {user?.arts[0] ? (
           <div>
             <h4>
-              <span>{user?.name}</span>'s paintings :
+              <span className="username">{user?.name}</span>'s paintings :
             </h4>
             <div className="arts">{user?.arts.map((a) => card(a))}</div>
           </div>
         ) : (
           <h4>
-            <span>{user?.name}</span> has no paintings yet :/
+            <span className="username">{user?.name}</span> has no paintings yet
+            :/
           </h4>
         )}
       </div>

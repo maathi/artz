@@ -14,6 +14,9 @@
   margin: auto;
 }
 
+#user .username {
+  color: orange;
+}
 #delete {
   cursor: pointer;
   color: white;
